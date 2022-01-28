@@ -14,6 +14,7 @@ public class FileUtils {
         while (scanner.hasNextLine()) {
             stringLinesList.add(scanner.nextLine());
         }
+        stringLinesList.remove(stringLinesList.size() - 1);
         return stringLinesList;
     }
 
