@@ -13,18 +13,20 @@ public class Log {
 
     List<LogItem> logItemList = new ArrayList<>();
     List<String> fileNamesList = new ArrayList<>();
-    Date FilteringTime;
+    Date filteringTime;
 
-    public Log(List<File> logFiles) {
+    public Log(List<File> logFiles, String expectedTextPart) {
+        // if (logFiles == null || logFiles.isEmpty()) throw new logFilesListIsEmptyException();
+        filteringTime = new Date();
         List<String> logLines = new ArrayList<>();
         for (File logFile : logFiles) {
+            fileNamesList.add(logFile.getName());
             try {
                 logLines.addAll(FileUtils.getStringLinesFromFile(logFile.getPath()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
-        List<List<String>> logItemsAsStrings = new ArrayList<>();
         List<Integer> startLineIndexes = new ArrayList<>();
         for (int i = 0; i < logLines.size(); i++) {
             if (logLines.get(i).contains(" |  | ")) startLineIndexes.add(i);
@@ -35,7 +37,8 @@ public class Log {
             for (int j = startLineIndexes.get(i); j < startLineIndexes.get(i + 1) - 1; j++) {
                 logItemAsStrings.add(logLines.get(j));
             }
-            logItemsAsStrings.add(logItemAsStrings);
+            LogItem logItem = new LogItem(logItemAsStrings, expectedTextPart);
+            if (logItem.isValuable) logItemList.add(logItem);
         }
     }
 }
