@@ -1,11 +1,14 @@
 package com.github.denakh.serverlogfilter;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileUtils {
+public class Utils {
 
     // "src/test/resources/file.log"
     public static List<String> getStringLinesFromFile(String filePath) throws FileNotFoundException {
@@ -26,7 +29,16 @@ public class FileUtils {
         return newFile;
     }
 
-    public static LogItem getObjectFromStringLine(String stringLine) {
-        return new LogItem();
+    public static Date getDateFromString(String dateString, String dateFormatString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatString);
+        try {
+            return dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            throw new RuntimeException(dateString + " time is not parsed. Please verify format: " + dateFormat);
+        }
     }
+
+//    public static LogItem getObjectFromStringLine(String stringLine) {
+//        return new LogItem();
+//    }
 }

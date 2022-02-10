@@ -16,13 +16,13 @@ public class Log {
     Date filteringTime;
 
     public Log(List<File> logFiles, String expectedTextPart) {
-        // if (logFiles == null || logFiles.isEmpty()) throw new logFilesListIsEmptyException();
+        if (logFiles == null || logFiles.isEmpty()) throw new RuntimeException("Log files list is empty");
         filteringTime = new Date();
         List<String> logLines = new ArrayList<>();
         for (File logFile : logFiles) {
             fileNamesList.add(logFile.getName());
             try {
-                logLines.addAll(FileUtils.getStringLinesFromFile(logFile.getPath()));
+                logLines.addAll(Utils.getStringLinesFromFile(logFile.getPath()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -38,7 +38,7 @@ public class Log {
                 logItemAsStrings.add(logLines.get(j));
             }
             LogItem logItem = new LogItem(logItemAsStrings, expectedTextPart);
-            if (logItem.isValuable) logItemList.add(logItem);
+            if (logItem.isValuable()) logItemList.add(logItem);
         }
     }
 }
