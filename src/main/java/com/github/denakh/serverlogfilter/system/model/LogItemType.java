@@ -1,4 +1,4 @@
-package com.github.denakh.serverlogfilter;
+package com.github.denakh.serverlogfilter.system.model;
 
 import java.util.Arrays;
 import java.util.List;

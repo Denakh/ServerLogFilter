@@ -1,5 +1,6 @@
-package com.github.denakh.serverlogfilter;
+package com.github.denakh.serverlogfilter.system.model;
 
+import com.github.denakh.serverlogfilter.system.Utils;
 import lombok.Data;
 
 import java.util.Arrays;
@@ -19,10 +20,9 @@ public class LogItem {
     private boolean isValuable;
     // String serviceName;
 
-
-    public boolean isValuable() {
-        return isValuable;
-    }
+//    public boolean isValuable() {
+//        return isValuable;
+//    }
 
     public LogItem(List<String> logItemAsStrings, String expectedTextPart) {
         if (logItemAsStrings.size() < 2) throw new RuntimeException(

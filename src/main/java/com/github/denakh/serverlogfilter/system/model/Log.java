@@ -1,5 +1,6 @@
-package com.github.denakh.serverlogfilter;
+package com.github.denakh.serverlogfilter.system.model;
 
+import com.github.denakh.serverlogfilter.system.Utils;
 import lombok.Data;
 
 import java.io.File;

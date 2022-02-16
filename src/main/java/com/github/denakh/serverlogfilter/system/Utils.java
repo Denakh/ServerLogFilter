@@ -1,4 +1,4 @@
-package com.github.denakh.serverlogfilter;
+package com.github.denakh.serverlogfilter.system;
 
 import java.io.*;
 import java.text.ParseException;
