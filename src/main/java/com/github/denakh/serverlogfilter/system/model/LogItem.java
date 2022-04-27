@@ -33,7 +33,7 @@ public class LogItem {
                 break;
             }
         }
-        List<String> mainLine = Arrays.asList(logItemAsStrings.get(0).split(" | "));
+        List<String> mainLine = Arrays.asList(logItemAsStrings.get(0).split(" \\| "));
         if (mainLine.size() < 4) throw new RuntimeException(
                 "Main line is invalid (number of elements should be more than 3), but actually is: " + mainLine.size());
         dateTime = Utils.getDateFromString(mainLine.get(0), DATE_FORMAT);
