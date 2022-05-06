@@ -42,7 +42,22 @@ public class LogItem {
         mainMessage = logItemAsStrings.get(1);
         if (logItemAsStrings.size() > 2) {
             // try with Streams
-            for (int i = 2; i < logItemAsStrings.size(); i++) additionalInfo += logItemAsStrings.get(i);
+            for (int i = 3; i < logItemAsStrings.size(); i++) additionalInfo += "\n" + logItemAsStrings.get(i);
         }
+    }
+
+    public String makeStringForFile() {
+        return  """
+                $dateTime | | $type | $sourceClass
+                $mainMessage
+                $additionalInfo
+                
+                
+                """
+                .replace("$dateTime", dateTime.toString())
+                .replace("$type", type.toString())
+                .replace("$sourceClass", sourceClass)
+                .replace("$mainMessage", mainMessage)
+                .replace("$additionalInfo", additionalInfo);
     }
 }

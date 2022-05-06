@@ -39,7 +39,13 @@ public class Log {
                 logItemAsStrings.add(logLines.get(j));
             }
             LogItem logItem = new LogItem(logItemAsStrings, expectedTextPart);
-            if (logItem.isValuable()) logItemList.add(logItem);
+            if (logItem.isValuable() && !logItemList.contains(logItem)) logItemList.add(logItem);
         }
+    }
+
+    public String makeFileString() {
+        final String[] fileString = {""};
+        logItemList.forEach(logItem -> fileString[0] += logItem.makeStringForFile());
+        return fileString[0];
     }
 }
