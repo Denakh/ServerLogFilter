@@ -54,7 +54,7 @@ public class LogItem {
                 
                 
                 """
-                .replace("$dateTime", dateTime.toString())
+                .replace("$dateTime", Utils.getFormattedStringFromDate(dateTime, DATE_FORMAT))
                 .replace("$type", type.toString())
                 .replace("$sourceClass", sourceClass)
                 .replace("$mainMessage", mainMessage)

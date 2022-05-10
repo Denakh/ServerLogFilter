@@ -22,11 +22,7 @@ public class Log {
         List<String> logLines = new ArrayList<>();
         for (File logFile : logFiles) {
             fileNamesList.add(logFile.getName());
-            try {
-                logLines.addAll(Utils.getStringLinesFromFile(logFile.getPath()));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            logLines.addAll(Utils.getStringLinesFromFile(logFile.getPath()));
         }
         List<Integer> startLineIndexes = new ArrayList<>();
         for (int i = 0; i < logLines.size(); i++) {
